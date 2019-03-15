@@ -1,0 +1,29 @@
+* {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-overflow-scrolling: touch;
+		}
+body {
+  text-rendering: optimizeLegibility;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  padding:1% 3%;
+  margin:auto;
+  max-width:42em;
+  line-height:140%;
+  }
+img#foaf\:depiction {
+  width: 90%;
+  border: thin dotted gray;
+  padding:3%;
+}
+aside {
+  background-color: beige;
+}
+p#icon {
+font-size:4em;
+  color:crimson;
+}
+a#icon {
+  color:crimson;
+  text-decoration:none;
+}
