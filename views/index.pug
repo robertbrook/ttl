@@ -1,0 +1,19 @@
+doctype html
+html(lang="en-GB")
+  head
+    meta(charset='utf-8')
+    title= "pageTitleTK"
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='style.css')
+  body
+    header
+      h1 Title
+    main
+      p
+        form(action="/ontology")
+          label Ontology URL
+          br
+          input(type="text" name="url" placeholder="")
+          button(type="submit")= 'Submit'
+      p Ontology linter
+    footer
