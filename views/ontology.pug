@@ -18,7 +18,7 @@ html(lang="en-GB")
 
     main
         
-      h2 Classes
+      
 
       each gotOwlClassTargets in gotOwlClasses
         each gotOwlClassTarget in gotOwlClassTargets
@@ -32,23 +32,15 @@ html(lang="en-GB")
               p.subClassOf Subclass of 
                 = gotOwlClassTarget.object.value
       
-      h2 Object properties
-      
-      h2 Data properties
-      
-      h2 Annotation properties
-      
-      h2 General axioms
-      
       section
         aside
           each gotQuad in gotQuads
             pre
-              span= gotQuad.subject.value
+              code= gotQuad.subject.value
               br
-              span= gotQuad.predicate.value
+              code= gotQuad.predicate.value
               br
-              span= gotQuad.object.value
+              code= gotQuad.object.value
 
     footer
       p#icon
