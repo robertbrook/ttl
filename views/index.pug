@@ -1,10 +1,10 @@
 include head.pug
-  body
-    header
-      h1 &#12244; ttl.glitch.me
-    main
-      form(action="/ontology")
-        label Turtle URL
-        input(type="text" name="url" value="https://raw.githubusercontent.com/ukparliament/ontologies/master/treaty/treaty-ontology.ttl")
-        button(type="submit")= 'Submit'
-    include footer.pug
+body
+  header
+    h1 &#12244; ttl.glitch.me
+  main
+    form(action="/ontology")
+      label Turtle URL
+      input(type="text" name="url" value="https://raw.githubusercontent.com/ukparliament/ontologies/master/treaty/treaty-ontology.ttl")
+      button(type="submit")= 'Submit'
+  include footer.pug
