@@ -8,7 +8,9 @@ html(lang="en-GB")
   body
     header
       
-      h1(id='dcterms:title', lang=gotDcTitleLanguage)= gotDcTitleValue
+      h1(id='dcterms:title', lang=gotDcTitleLanguage)
+        &#12244;
+        = gotDcTitleValue
       
       p(id='dcterms:description', lang=gotDcDescriptionLanguage)= gotDcDescriptionValue
       
@@ -17,8 +19,6 @@ html(lang="en-GB")
           img(src=gotFoafDepiction.value, id='foaf:depiction')
 
     main
-        
-      
 
       each gotOwlClassTargets in gotOwlClasses
         each gotOwlClassTarget in gotOwlClassTargets
@@ -43,9 +43,6 @@ html(lang="en-GB")
               code= gotQuad.object.value
 
     footer
-      p#icon
-        a(href="https://ttl.glitch.me", title="https://ttl.glitch.me")#icon
-          | &#12244;
           
       details.prefixes
         summary
