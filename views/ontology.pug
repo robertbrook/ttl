@@ -14,6 +14,15 @@ html(lang="en-GB")
       
       p(id='dcterms:description', lang=gotDcDescriptionLanguage)= gotDcDescriptionValue
       
+      details.prefixes
+        summary
+          span Prefixes
+        each val, index in gotPrefixes
+          p.prefix
+            strong= index
+            | &nbsp;
+            =val
+            
       p
         a(href=gotFoafDepiction.value)
           img(src=gotFoafDepiction.value, id='foaf:depiction')
@@ -41,14 +50,7 @@ html(lang="en-GB")
 
     footer
           
-      details.prefixes
-        summary
-          span Prefixes
-        each val, index in gotPrefixes
-          p.prefix
-            strong= index
-            | &nbsp;
-            =val
+      
             
       details.conversions
         summary
