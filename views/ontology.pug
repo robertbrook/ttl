@@ -23,35 +23,6 @@ html(lang="en-GB")
             | &nbsp;
             =val
             
-      p
-        a(href=gotFoafDepiction.value)
-          img(src=gotFoafDepiction.value, id='foaf:depiction')
-
-    main
-
-      each gotOwlClassTargets in gotOwlClasses
-        each gotOwlClassTarget in gotOwlClassTargets
-          - console.log(gotOwlClassTarget.predicate.value)
-          case gotOwlClassTarget.predicate.value
-            when "http://www.w3.org/2000/01/rdf-schema#label"
-              h3.label= gotOwlClassTarget.object.value
-            when "http://www.w3.org/2000/01/rdf-schema#comment"
-              p.comment= gotOwlClassTarget.object.value
-            when "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-              p.subClassOf Subclass of 
-                = gotOwlClassTarget.object.value
-      
-      section
-        pre
-          each gotQuad in gotQuads
-            code= gotQuad.subject.value
-            code= gotQuad.predicate.value
-            code= gotQuad.object.value
-
-    footer
-          
-      
-            
       details.conversions
         summary
           span Conversions
@@ -107,6 +78,37 @@ html(lang="en-GB")
           
         p
           a(href="http://www.easyrdf.org/converter?in=turtle&out=gif&raw=1&uri=" + ontologyurl) GIF
+            
+      p
+        a(href=gotFoafDepiction.value)
+          img(src=gotFoafDepiction.value, id='foaf:depiction')
+
+    main
+
+      each gotOwlClassTargets in gotOwlClasses
+        each gotOwlClassTarget in gotOwlClassTargets
+          - console.log(gotOwlClassTarget.predicate.value)
+          case gotOwlClassTarget.predicate.value
+            when "http://www.w3.org/2000/01/rdf-schema#label"
+              h3.label= gotOwlClassTarget.object.value
+            when "http://www.w3.org/2000/01/rdf-schema#comment"
+              p.comment= gotOwlClassTarget.object.value
+            when "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+              p.subClassOf Subclass of 
+                = gotOwlClassTarget.object.value
+      
+      section
+        pre
+          each gotQuad in gotQuads
+            code= gotQuad.subject.value
+            code= gotQuad.predicate.value
+            code= gotQuad.object.value
+
+    footer
+          
+      
+            
+      
           
       p Created 
         time(id='dcterms:created')= gotDcTermsCreatedValue
