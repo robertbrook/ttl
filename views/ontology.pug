@@ -34,11 +34,10 @@ html(lang="en-GB")
       
       section
         pre
-          code
-            each gotQuad in gotQuads
-              = gotQuad.subject.value
-              = gotQuad.predicate.value
-              = gotQuad.object.value
+          each gotQuad in gotQuads
+            code= gotQuad.subject.value
+            code= gotQuad.predicate.value
+            code= gotQuad.object.value
 
     footer
           
