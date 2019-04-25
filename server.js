@@ -11,6 +11,15 @@ const store = N3.Store();
 
 var fromPrefixes;
 
+Array.prototype.groupBy = function(prop) {
+  return this.reduce(function(groups, item) {
+    const val = item[prop]
+    groups[val] = groups[val] || []
+    groups[val].push(item)
+    return groups
+  }, {})
+}
+
 app.set('view engine', 'pug');
 
 app.use(express.static('public'));
@@ -61,8 +70,6 @@ app.get('/ontology', function (req, res) {
       gotOwlClasses.push(gotOwlClass);
   }
             
-  console.log(gotOwlObjectProperties);
-            
   const gotFoafMakerBlankNodes = store.getObjects(undefined, 'http://xmlns.com/foaf/0.1/maker', undefined);
   
   var fmQuads = [];
@@ -73,6 +80,7 @@ app.get('/ontology', function (req, res) {
   }
   
   res.render('ontology', { gotQuads: store.getQuads(undefined, undefined, undefined),
+                          // gotQuadsBySubject: store.getQuads(undefined, undefined, undefined).groupBy(),
                           gotDcDescriptionValue: gotDcDescription.object.value,
                           gotDcDescriptionLanguage: gotDcDescription.object.language,
                           gotPrefixes: fromPrefixes,
@@ -86,7 +94,7 @@ app.get('/ontology', function (req, res) {
                           gotOwlClassSubjects: gotOwlClassSubjects,
                           gotOwlClasses: gotOwlClasses
                       });
-
+            
 
           };
         });

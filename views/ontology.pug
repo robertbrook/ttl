@@ -78,10 +78,15 @@ body
         img(src=gotFoafDepiction.value, id='foaf:depiction')
 
   main
-
+  
+    
+    each gotQuadBySubject in gotQuadsBySubject
+      hr
+      p= gotQuadBySubject
+     
+    
     each gotOwlClassTargets in gotOwlClasses
       each gotOwlClassTarget in gotOwlClassTargets
-        - console.log(gotOwlClassTarget.predicate.value)
         case gotOwlClassTarget.predicate.value
           when "http://www.w3.org/2000/01/rdf-schema#label"
             h3.label= gotOwlClassTarget.object.value
@@ -90,7 +95,8 @@ body
           when "http://www.w3.org/2000/01/rdf-schema#subClassOf"
             p.subClassOf Subclass of 
               = gotOwlClassTarget.object.value
-
+    // _.groupBy(cars, 'make')
+    
     section
       pre
         each gotQuad in gotQuads
@@ -99,10 +105,6 @@ body
           code= gotQuad.object.value
 
   footer
-
-
-
-
 
     p Created 
       time(id='dcterms:created')= gotDcTermsCreatedValue
