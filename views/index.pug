@@ -6,10 +6,13 @@ html(lang="en-GB")
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet' href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/light.css')
   body
-    h1 ttl.glitch.me
-    p
+    header
+      h1 ttl.glitch.me
+    main
       form(action="/ontology")
         label Turtle URL
         input(type="text" name="url" placeholder="")
         button(type="submit")= 'Submit'
-    address robertbrook@fastmail.fm
+    footer
+      p
+        robertbrook@fastmail.fm
