@@ -1,119 +1,119 @@
 include head.pug
-  body
-    header
-      
-      h1(id='dcterms:title', lang=gotDcTitleLanguage)
-        | &#12244;
-        = gotDcTitleValue
-      
-      p(id='dcterms:description', lang=gotDcDescriptionLanguage)= gotDcDescriptionValue
-      
-      details.prefixes
-        summary
-          span Prefixes
-        each val, index in gotPrefixes
-          p.prefix
-            strong= index
-            | &nbsp;
-            =val
-            
-      details.conversions
-        summary
-          span Conversions
-        p
-          a(href=ontologyurl, title=ontologyurl) Turtle source
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=php&uri=" + ontologyurl) RDF/PHP preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=php&raw=1&uri=" + ontologyurl) RDF/PHP
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=json&uri=" + ontologyurl) RDF/JSON preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=json&raw=1&uri=" + ontologyurl) RDF/JSON
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=jsonld&uri=" + ontologyurl) JSON-LD preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=jsonld&raw=1&uri=" + ontologyurl) JSON-LD
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=ntriples&uri=" + ontologyurl) N-Triples preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=ntriples&raw=1&uri=" + ontologyurl) N-Triples
-         
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=turtle&uri=" + ontologyurl) Turtle preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=turtle&raw=1&uri=" + ontologyurl) Turtle
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=rdfxml&uri=" + ontologyurl) RDF/XML preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=rdfxml&raw=1&uri=" + ontologyurl) RDF/XML
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=dot&uri=" + ontologyurl) Graphviz preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=dot&raw=1&uri=" + ontologyurl) Graphviz
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=n3&uri=" + ontologyurl) Notation3 preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=n3&raw=1&uri=" + ontologyurl) Notation3
-        
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=svg&uri=" + ontologyurl) SVG preview
-          | &nbsp;&mdash; 
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=svg&raw=1&uri=" + ontologyurl) SVG
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=png&raw=1&uri=" + ontologyurl) PNG
-          
-        p
-          a(href="http://www.easyrdf.org/converter?in=turtle&out=gif&raw=1&uri=" + ontologyurl) GIF
-            
+body
+  header
+
+    h1(id='dcterms:title', lang=gotDcTitleLanguage)
+      | &#12244;
+      = gotDcTitleValue
+
+    p(id='dcterms:description', lang=gotDcDescriptionLanguage)= gotDcDescriptionValue
+
+    details.prefixes
+      summary
+        span Prefixes
+      each val, index in gotPrefixes
+        p.prefix
+          strong= index
+          | &nbsp;
+          =val
+
+    details.conversions
+      summary
+        span Conversions
       p
-        a(href=gotFoafDepiction.value)
-          img(src=gotFoafDepiction.value, id='foaf:depiction')
+        a(href=ontologyurl, title=ontologyurl) Turtle source
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=php&uri=" + ontologyurl) RDF/PHP preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=php&raw=1&uri=" + ontologyurl) RDF/PHP
 
-    main
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=json&uri=" + ontologyurl) RDF/JSON preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=json&raw=1&uri=" + ontologyurl) RDF/JSON
 
-      each gotOwlClassTargets in gotOwlClasses
-        each gotOwlClassTarget in gotOwlClassTargets
-          - console.log(gotOwlClassTarget.predicate.value)
-          case gotOwlClassTarget.predicate.value
-            when "http://www.w3.org/2000/01/rdf-schema#label"
-              h3.label= gotOwlClassTarget.object.value
-            when "http://www.w3.org/2000/01/rdf-schema#comment"
-              p.comment= gotOwlClassTarget.object.value
-            when "http://www.w3.org/2000/01/rdf-schema#subClassOf"
-              p.subClassOf Subclass of 
-                = gotOwlClassTarget.object.value
-      
-      section
-        pre
-          each gotQuad in gotQuads
-            code= gotQuad.subject.value
-            code= gotQuad.predicate.value
-            code= gotQuad.object.value
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=jsonld&uri=" + ontologyurl) JSON-LD preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=jsonld&raw=1&uri=" + ontologyurl) JSON-LD
 
-    footer
-          
-      
-            
-      
-          
-      p Created 
-        time(id='dcterms:created')= gotDcTermsCreatedValue
-        
-      p= gotDcTermsRights.object.value
-      
-      each fm in fms
-        p
-          each ff in fm
-            if ff.predicate.value == "http://xmlns.com/foaf/0.1/name"
-              address!= ff.object.value + "&nbsp;"
-            if ff.predicate.value == "http://xmlns.com/foaf/0.1/homepage"
-              a(href=ff.object.value)= ff.object.value
-      
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=ntriples&uri=" + ontologyurl) N-Triples preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=ntriples&raw=1&uri=" + ontologyurl) N-Triples
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=turtle&uri=" + ontologyurl) Turtle preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=turtle&raw=1&uri=" + ontologyurl) Turtle
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=rdfxml&uri=" + ontologyurl) RDF/XML preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=rdfxml&raw=1&uri=" + ontologyurl) RDF/XML
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=dot&uri=" + ontologyurl) Graphviz preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=dot&raw=1&uri=" + ontologyurl) Graphviz
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=n3&uri=" + ontologyurl) Notation3 preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=n3&raw=1&uri=" + ontologyurl) Notation3
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=svg&uri=" + ontologyurl) SVG preview
+        | &nbsp;&mdash; 
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=svg&raw=1&uri=" + ontologyurl) SVG
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=png&raw=1&uri=" + ontologyurl) PNG
+
+      p
+        a(href="http://www.easyrdf.org/converter?in=turtle&out=gif&raw=1&uri=" + ontologyurl) GIF
+
+    p
+      a(href=gotFoafDepiction.value)
+        img(src=gotFoafDepiction.value, id='foaf:depiction')
+
+  main
+
+    each gotOwlClassTargets in gotOwlClasses
+      each gotOwlClassTarget in gotOwlClassTargets
+        - console.log(gotOwlClassTarget.predicate.value)
+        case gotOwlClassTarget.predicate.value
+          when "http://www.w3.org/2000/01/rdf-schema#label"
+            h3.label= gotOwlClassTarget.object.value
+          when "http://www.w3.org/2000/01/rdf-schema#comment"
+            p.comment= gotOwlClassTarget.object.value
+          when "http://www.w3.org/2000/01/rdf-schema#subClassOf"
+            p.subClassOf Subclass of 
+              = gotOwlClassTarget.object.value
+
+    section
+      pre
+        each gotQuad in gotQuads
+          code= gotQuad.subject.value
+          code= gotQuad.predicate.value
+          code= gotQuad.object.value
+
+  footer
+
+
+
+
+
+    p Created 
+      time(id='dcterms:created')= gotDcTermsCreatedValue
+
+    p= gotDcTermsRights.object.value
+
+    each fm in fms
+      p
+        each ff in fm
+          if ff.predicate.value == "http://xmlns.com/foaf/0.1/name"
+            address!= ff.object.value + "&nbsp;"
+          if ff.predicate.value == "http://xmlns.com/foaf/0.1/homepage"
+            a(href=ff.object.value)= ff.object.value
+
