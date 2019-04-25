@@ -18,6 +18,7 @@ img#foaf\:depiction {
 }
 aside {
   background-color: beige;
+	word-wrap: break-word;
 }
 p#icon {
 font-size:4em;
