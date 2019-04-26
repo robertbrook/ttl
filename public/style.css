@@ -1,0 +1,13 @@
+
+
+body {
+  color:black;
+  background-color:white;
+  font-family:system-ui;
+  padding:1rem;
+  max-width:38rem;
+  margin:auto;
+}
+main {
+  background-color:beige;
+}
