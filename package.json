@@ -11,16 +11,15 @@
   },
   "dependencies": {
     "express": "^4.16.4",
-    "n3": "^1.0.4",
+    "n3": "^1.1.1",
     "request": "2.88.0",
-    "pug": "2.0.3",
-    "coffeescript": "*"
+    "pug": "2.0.3"
   },
   "engines": {
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://glitch.com/edit/#!/ttl"
   },
   "license": "MIT",
   "keywords": [

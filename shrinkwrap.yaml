@@ -1,7 +1,6 @@
 dependencies:
-  coffeescript: 2.3.2
   express: 4.16.4
-  n3: 1.0.4
+  n3: 1.1.1
   pug: 2.0.3
   request: 2.88.0
 packages:
@@ -193,13 +192,6 @@ packages:
       node: '>= 0.12.0'
     resolution:
       integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=
-  /coffeescript/2.3.2:
-    dev: false
-    engines:
-      node: '>=6'
-    hasBin: true
-    resolution:
-      integrity: sha512-YObiFDoukx7qPBi/K0kUKyntEZDfBQiqs/DbrR1xzASKOBjGT7auD85/DiPeRr9k++lRj7l3uA9TNMLfyfcD/Q==
   /combined-stream/1.0.7:
     dependencies:
       delayed-stream: 1.0.0
@@ -640,12 +632,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=
-  /n3/1.0.4:
+  /n3/1.1.1:
     dev: false
     engines:
       node: '>=8.0'
     resolution:
-      integrity: sha512-iMHI7n3OsmMsUf6u9un6f8TCPgN1Zs6uKKcXrpTFUNXaswaOFk3H2/YuzuLE4T5Mhd+1haXAuufBFmsbRaULzw==
+      integrity: sha512-GEJXn+wc0f4l2noP1N/rMUH9Gei1DQ8IDN03eBsH+uQKkNQUOLgL7ZJVaDjY+pP3LmbLxL1LpUg/AvZ7Kc7KVw==
   /negotiator/0.6.1:
     dev: false
     engines:
@@ -1088,8 +1080,7 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
-  coffeescript: '*'
   express: ^4.16.4
-  n3: ^1.0.4
+  n3: ^1.1.1
   pug: 2.0.3
   request: 2.88.0
