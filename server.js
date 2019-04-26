@@ -80,7 +80,7 @@ app.get('/ontology', function (req, res) {
   }
   
   res.render('ontology', { gotQuads: store.getQuads(undefined, undefined, undefined),
-                          // gotQuadsBySubject: store.getQuads(undefined, undefined, undefined).groupBy(),
+                          gotQuadsBySubject: store.getQuads(undefined, undefined, undefined).groupBy(0),
                           gotDcDescriptionValue: gotDcDescription.object.value,
                           gotDcDescriptionLanguage: gotDcDescription.object.language,
                           gotPrefixes: fromPrefixes,
