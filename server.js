@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const url = require('url');
 
 app.set('view engine', 'pug');
 
@@ -17,12 +18,29 @@ app.get('/render', function (req, res) {
   const store = new N3.Store();
   const ttlurl = req.query.url;
   
+  const myURL = url.parse('https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash');
+  console.log(myURL);
+  
   request(ttlurl, function (error, response, body) {       
     store.addQuads(parser.parse(body));
-    console.log(store.getQuads());
     
+    const subjects = store.getSubjects();
+    
+    var subjectPacks = [];
+        
+    subjects.forEach(function(subject) {
+        var subjectPack = [];
+        store.forEach(function(thisQuad){subjectPack.push(thisQuad);}, subject.id, null, null, null);
+        subjectPacks.push(subjectPack);
+        // console.log('\n\n', subject.id, subjectPacks);
+      });
+        
     res.render('render', { 
-        subjects: store.getSubjects()
+        subjects: subjects,
+        subjectPacks: subjectPacks,
+        predicates: store.getPredicates(),
+        objects: store.getObjects(),
+        graphs: store.getGraphs()
         });
     });
 });
