@@ -3,9 +3,18 @@ body
   header
   
   main
-    each subject in subjects
-      li= subject.id
-       
+    
+    each subjectPack in subjectPacks
+      each pack in subjectPack
+        p
+          strong= pack.predicate.value
+          | &nbsp;
+          span= pack.object.value
+        // article= JSON.stringify(pack)
+      hr
+
+    
+        
   include footer.pug
 
    
