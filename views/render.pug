@@ -1,19 +1,17 @@
 include head.pug
+
 body
   header
   
   main
     
     each subjectPack in subjectPacks
-      each pack in subjectPack
-        p
-          strong= pack.predicate.value
-          | &nbsp;
-          span= pack.object.value
-        // article= JSON.stringify(pack)
-      hr
-
-    
+      section
+        each pack in subjectPack
+          p
+            span= pack.predicate.value.split('#')[1]
+            br
+            strong= pack.object.value
         
   include footer.pug
 
