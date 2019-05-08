@@ -1,13 +1,18 @@
 body {
-  color:black;
-  background-color:white;
+  color:#000;
+  background-color:#fff;
   font-family:system-ui;
   padding:1rem;
   max-width:42rem;
   margin:auto;
+  line-height:1.4rem;
 }
 
-header {background-color:beige;}
+header {background-color:white;}
+
+header a {text-decoration:none;}
+
+h1 {color:crimson;}
 
 main section {
   background-color:#eee;
@@ -15,4 +20,10 @@ main section {
   margin:1rem 0;
 }
 
-footer {background-color:beige;}
+article {
+  border: thin dotted gray;
+  padding:1rem;
+  margin: 1rem 0;
+}
+
+footer {background-color:white;}
