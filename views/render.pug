@@ -2,17 +2,28 @@ include head.pug
 
 body
   header
-  
+    a(href='https://ttl.glitch.me/')
+      h1 &#12244; ttl.glitch.me
   main
     
     each subjectPack in subjectPacks
-      section
+      
+      article
         each pack in subjectPack
-          p
-            span= pack.predicate.value.split('#')[1]
-            br
-            strong= pack.object.value
         
+          - var [predicateUrl, predicateFragment] = pack.predicate.value.split('#')
+          
+          case predicateFragment
+            when 'label'
+              h3= pack.object.value
+            when 'comment'
+              p= pack.object.value
+            when 'type'
+              p= pack.object.value
+            default
+              p= predicateFragment
+              em= pack.object.value
+          
   include footer.pug
 
    

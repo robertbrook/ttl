@@ -18,24 +18,26 @@ app.get('/render', function (req, res) {
   const store = new N3.Store();
   const ttlurl = req.query.url;
   
-  request(ttlurl, function (error, response, body) {       
-    store.addQuads(parser.parse(body));
+  request(ttlurl, function (error, response, body) {    
     
+    store.addQuads(parser.parse(body));
+
     const subjects = store.getSubjects();
     
     var subjectPacks = [];
         
     subjects.forEach(function(subject) {
         var subjectPack = [];
-        store.forEach(function(thisQuad){subjectPack.push(thisQuad);}, subject.id, null, null, null);
+        store.forEach(
+          function(thisQuad){subjectPack.push(thisQuad);}, subject.id, null, null, null
+        );
         subjectPacks.push(subjectPack);
-        // console.log('\n\n', subject.id, subjectPacks);
       });
-        
+                
     res.render('render', { 
         subjects: subjects,
         subjectPacks: subjectPacks,
-        predicates: store.getPredicates(),
+        predicates: store.getPredicates().map(predicate => predicate.id),
         objects: store.getObjects(),
         graphs: store.getGraphs()
         });
