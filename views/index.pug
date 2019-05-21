@@ -5,6 +5,7 @@ body
   main
     form(action="/render")
       label Turtle URL
-      input(type="text" name="url" value="https://raw.githubusercontent.com/ukparliament/ontologies/master/treaty/treaty-ontology.ttl")
-      button(type="submit")= 'Submit'
+      input#url(type="text" name="url" value="treaty")
+      input(type="submit" value="Render")
+
   include footer.pug
