@@ -34,6 +34,7 @@ app.get('/render', function (req, res) {
         subjectPacks.push(subjectPack);
       });
                 
+    
     res.render('render', { 
         subjects: subjects,
         subjectPacks: subjectPacks,
@@ -41,6 +42,7 @@ app.get('/render', function (req, res) {
         objects: store.getObjects(),
         graphs: store.getGraphs()
         });
+    
     });
 });
             
