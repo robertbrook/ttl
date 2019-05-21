@@ -5,6 +5,8 @@ body
     a(href='https://ttl.glitch.me/')
       h1 &#12244; ttl.glitch.me
   main
+    each subject in subjects
+      li= subject.value
     
     each subjectPack in subjectPacks
       
@@ -15,15 +17,20 @@ body
           
           case predicateFragment
             when 'label'
-              h3= pack.object.value
+              - var myLabel = pack.object.value
             when 'comment'
-              p= pack.object.value
+              - var myComment = pack.object.value
             when 'type'
-              p= pack.object.value
-            default
-              p= predicateFragment
-              em= pack.object.value
-          
+              - var myType = pack.object.value.split('#')[1]
+            when 'isDefinedBy'
+              - var myDefinedBy = pack.object.value
+            when 'domain'
+              p DOMAIN
+            when 'range'
+              p RANGE
+                      
+          p= myLabel
+            i= myType
   include footer.pug
 
    
